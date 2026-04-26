@@ -54,7 +54,7 @@ ollama pull nomic-embed-text
 ### 1. Clone and Configure
 
 ```bash
-git clone https://github.com/netera-michael/CentralMemory.git
+git clone https://github.com/netera-michael/AIAgent-CentralMemory.git
 cd CentralMemory
 cp .env.example .env
 # Edit .env — set POSTGRES_PASSWORD, ADMIN_API_KEY, and BIND_IP
