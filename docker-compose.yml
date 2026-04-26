@@ -81,8 +81,8 @@ services:
     build:
       context: ./ui
       args:
-        - VITE_API_URL=${VITE_API_URL:-http://localhost:8001}
-        - VITE_API_KEY=${ADMIN_API_KEY:-}
+        VITE_API_URL: /api
+        VITE_API_KEY: ${ADMIN_API_KEY:-}
     container_name: centralmemory-ui
     restart: unless-stopped
     depends_on:

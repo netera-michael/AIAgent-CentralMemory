@@ -84,7 +84,7 @@ export default function Memories() {
         (m) =>
           (m.title || "").toLowerCase().includes(q) ||
           m.content.toLowerCase().includes(q) ||
-          (m.summary || "").toLowerCase().includes(q)
+          (m.content || "").toLowerCase().includes(q)
       )
     }
     return result
@@ -139,13 +139,13 @@ export default function Memories() {
 
       <HStack spacing={3} mb={4} flexWrap="wrap">
         <Input
-          placeholder="Search title, content, summary..."
+          placeholder="Search title, content..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           maxW="300px"
-          bg="navy.700"
+          bg="surface.2"
           border="1px solid"
-          borderColor="whiteAlpha.100"
+          borderColor="surface.3"
           color="white"
           _placeholder={{ color: "gray.500" }}
         />
@@ -154,9 +154,9 @@ export default function Memories() {
           value={statusFilter}
           onChange={(e) => setStatusFilter(e.target.value)}
           maxW="150px"
-          bg="navy.700"
+          bg="surface.2"
           border="1px solid"
-          borderColor="whiteAlpha.100"
+          borderColor="surface.3"
           color="white"
         >
           {STATUSES.map((s) => (
@@ -170,9 +170,9 @@ export default function Memories() {
           value={scopeFilter}
           onChange={(e) => setScopeFilter(e.target.value)}
           maxW="180px"
-          bg="navy.700"
+          bg="surface.2"
           border="1px solid"
-          borderColor="whiteAlpha.100"
+          borderColor="surface.3"
           color="white"
         >
           {SCOPES.map((s) => (
@@ -186,9 +186,9 @@ export default function Memories() {
           value={typeFilter}
           onChange={(e) => setTypeFilter(e.target.value)}
           maxW="150px"
-          bg="navy.700"
+          bg="surface.2"
           border="1px solid"
-          borderColor="whiteAlpha.100"
+          borderColor="surface.3"
           color="white"
         >
           {TYPES.map((t) => (
@@ -202,24 +202,24 @@ export default function Memories() {
         </Text>
       </HStack>
 
-      <Card bg="navy.700" variant="outline" borderColor="whiteAlpha.100" overflow="hidden">
+      <Card bg="surface.2" variant="outline" borderColor="surface.3" overflow="hidden">
         <CardBody p={0}>
           <Table variant="simple" size="sm" colorScheme="whiteAlpha">
             <Thead>
               <Tr>
-                <Th color="gray.400" borderBottomColor="whiteAlpha.200">
+                <Th color="gray.400" borderBottomColor="surface.4">
                   Title
                 </Th>
-                <Th color="gray.400" borderBottomColor="whiteAlpha.200">
+                <Th color="gray.400" borderBottomColor="surface.4">
                   Type
                 </Th>
-                <Th color="gray.400" borderBottomColor="whiteAlpha.200">
+                <Th color="gray.400" borderBottomColor="surface.4">
                   Scope
                 </Th>
-                <Th color="gray.400" borderBottomColor="whiteAlpha.200">
+                <Th color="gray.400" borderBottomColor="surface.4">
                   Status
                 </Th>
-                <Th color="gray.400" borderBottomColor="whiteAlpha.200">
+                <Th color="gray.400" borderBottomColor="surface.4">
                   Created
                 </Th>
               </Tr>
@@ -291,6 +291,7 @@ export default function Memories() {
 
       {selected && (
         <MemoryModal
+          key={selected.id}
           memory={selected}
           isOpen={isOpen}
           onClose={onClose}
@@ -314,13 +315,11 @@ function MemoryModal({
 }) {
   const [editTitle, setEditTitle] = useState(memory.title || "")
   const [editContent, setEditContent] = useState(memory.content)
-  const [editSummary, setEditSummary] = useState(memory.summary || "")
   const [editStatus, setEditStatus] = useState(memory.status)
 
   const handleUpdate = async () => {
     const payload: Partial<Memory> = {}
     if (editTitle !== (memory.title || "")) payload.title = editTitle
-    if (editSummary !== (memory.summary || "")) payload.summary = editSummary
     if (editContent !== memory.content) payload.content = editContent
     if (editStatus !== memory.status) payload.status = editStatus
     if (Object.keys(payload).length > 0) {
@@ -332,7 +331,7 @@ function MemoryModal({
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="4xl">
       <ModalOverlay bg="blackAlpha.700" />
-      <ModalContent bg="navy.800" maxH="90vh" overflowY="auto">
+      <ModalContent bg="surface.3" maxH="90vh" overflowY="auto">
         <ModalHeader color="white">
           <HStack spacing={3}>
             <Badge colorScheme={STATUS_COLORS[memory.status] || "gray"}>
@@ -385,25 +384,10 @@ function MemoryModal({
               <Input
                 value={editTitle}
                 onChange={(e) => setEditTitle(e.target.value)}
-                bg="navy.900"
+                bg="surface.4"
                 color="white"
                 border="1px solid"
-                borderColor="whiteAlpha.200"
-              />
-            </FormControl>
-
-            <FormControl>
-              <FormLabel color="gray.400" fontSize="sm">
-                Summary
-              </FormLabel>
-              <Textarea
-                value={editSummary}
-                onChange={(e) => setEditSummary(e.target.value)}
-                rows={2}
-                bg="navy.900"
-                color="white"
-                border="1px solid"
-                borderColor="whiteAlpha.200"
+                borderColor="surface.4"
               />
             </FormControl>
 
@@ -415,10 +399,10 @@ function MemoryModal({
                 value={editContent}
                 onChange={(e) => setEditContent(e.target.value)}
                 rows={8}
-                bg="navy.900"
+                bg="surface.4"
                 color="white"
                 border="1px solid"
-                borderColor="whiteAlpha.200"
+                borderColor="surface.4"
                 fontFamily="mono"
                 fontSize="sm"
               />
@@ -431,10 +415,10 @@ function MemoryModal({
               <Select
                 value={editStatus}
                 onChange={(e) => setEditStatus(e.target.value)}
-                bg="navy.900"
+                bg="surface.4"
                 color="white"
                 border="1px solid"
-                borderColor="whiteAlpha.200"
+                borderColor="surface.4"
               >
                 {STATUSES.map((s) => (
                   <option key={s} value={s}>

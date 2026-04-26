@@ -27,27 +27,27 @@ export default function Sidebar() {
 
   return (
     <Box
-      w="260px"
+      w="240px"
       h="100vh"
-      bg="navy.800"
+      bg="surface.1"
       borderRight="1px solid"
-      borderRightColor="whiteAlpha.100"
+      borderRightColor="surface.3"
       position="fixed"
       left={0}
       top={0}
       overflowY="auto"
     >
       <Flex direction="column" h="full">
-        <Box p={6} pb={4}>
-          <Text fontSize="xl" fontWeight="bold" color="white">
+        <Box p={5} pb={3}>
+          <Text fontSize="lg" fontWeight="bold" color="white" letterSpacing="tight">
             CentralMemory
           </Text>
-          <Text fontSize="xs" color="gray.400" mt={1}>
+          <Text fontSize="xs" color="gray.500" mt={0.5}>
             Memory Control Panel
           </Text>
         </Box>
 
-        <VStack spacing={1} align="stretch" px={3} flex={1}>
+        <VStack spacing={0.5} align="stretch" px={3} flex={1}>
           {NAV_ITEMS.map((item) => {
             const isActive = location.pathname === item.path
             return (
@@ -57,13 +57,13 @@ export default function Sidebar() {
                 to={item.path}
                 display="flex"
                 alignItems="center"
-                px={4}
-                py={2.5}
-                borderRadius="lg"
-                bg={isActive ? "brand.500" : "transparent"}
+                px={3}
+                py={2}
+                borderRadius="md"
+                bg={isActive ? "brand.600" : "transparent"}
                 color={isActive ? "white" : "gray.400"}
-                _hover={{ bg: isActive ? "brand.500" : "whiteAlpha.200", color: "white" }}
-                transition="all 0.15s"
+                _hover={{ bg: isActive ? "brand.600" : "surface.3", color: "white" }}
+                transition="all 0.1s"
                 fontWeight={isActive ? "semibold" : "medium"}
                 fontSize="sm"
               >
@@ -76,7 +76,7 @@ export default function Sidebar() {
 
         <Spacer />
 
-        <Box p={4} borderTop="1px solid" borderColor="whiteAlpha.100">
+        <Box p={4} borderTop="1px solid" borderColor="surface.3">
           <Flex align="center">
             <Box
               w={2}
@@ -85,18 +85,10 @@ export default function Sidebar() {
               bg={connected ? "green.400" : "red.400"}
               mr={2}
             />
-            <Text fontSize="xs" color="gray.400">
+            <Text fontSize="xs" color="gray.500">
               API {connected ? "Connected" : "Disconnected"}
             </Text>
           </Flex>
-          <Badge
-            mt={2}
-            colorScheme={connected ? "green" : "red"}
-            variant="subtle"
-            fontSize="2xs"
-          >
-            {connected ? "HEALTHY" : "DOWN"}
-          </Badge>
         </Box>
       </Flex>
     </Box>

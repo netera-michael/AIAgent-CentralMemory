@@ -137,14 +137,14 @@ function APIKeysPanel() {
             <Text fontSize="sm" color="white" fontWeight="bold">
               Copy this key now — it won't be shown again!
             </Text>
-            <Text fontFamily="mono" fontSize="sm" color="white" bg="navy.900" p={2} borderRadius="md" mt={1}>
+            <Text fontFamily="mono" fontSize="sm" color="white" bg="surface.4" p={2} borderRadius="md" mt={1}>
               {newKey}
             </Text>
           </Box>
         </Alert>
       )}
 
-      <Card bg="navy.700" variant="outline" borderColor="whiteAlpha.100" mb={6}>
+      <Card bg="surface.2" variant="outline" borderColor="surface.3" mb={6}>
         <CardBody>
           <Heading size="sm" mb={4} color="white">
             Create API Key
@@ -158,10 +158,10 @@ function APIKeysPanel() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="e.g., opencode-client"
-                bg="navy.900"
+                bg="surface.4"
                 color="white"
                 border="1px solid"
-                borderColor="whiteAlpha.200"
+                borderColor="surface.4"
               />
             </FormControl>
             <FormControl>
@@ -202,7 +202,7 @@ function APIKeysPanel() {
 
       <VStack spacing={2} align="stretch">
         {keys.map((key) => (
-          <Card key={key.id} bg="navy.700" variant="outline" borderColor="whiteAlpha.100">
+          <Card key={key.id} bg="surface.2" variant="outline" borderColor="surface.3">
             <CardBody py={3}>
               <Flex justify="space-between" align="center">
                 <Box>

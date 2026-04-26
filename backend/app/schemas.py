@@ -24,7 +24,6 @@ class MemoryBase(BaseModel):
     type: str
     title: Optional[str] = None
     content: str
-    summary: Optional[str] = None
     scope: str
     sensitivity: str = "internal"
     confidence: Optional[float] = None
@@ -76,7 +75,6 @@ class ReviewItemResponse(BaseModel):
 
 class MemoryUpdate(BaseModel):
     title: Optional[str] = None
-    summary: Optional[str] = None
     content: Optional[str] = None
     status: Optional[str] = None
     confidence: Optional[float] = None

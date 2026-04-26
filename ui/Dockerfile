@@ -1,5 +1,7 @@
 FROM node:20-slim AS build
 WORKDIR /app
+ARG VITE_API_URL=/api
+ARG VITE_API_KEY=
 COPY package.json package-lock.json ./
 RUN npm ci
 COPY . .

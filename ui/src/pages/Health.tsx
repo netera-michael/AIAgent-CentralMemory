@@ -52,7 +52,7 @@ export default function Health() {
       )}
 
       <SimpleGrid columns={{ base: 2, lg: 4 }} spacing={4} mb={6}>
-        <Card bg="navy.700" variant="outline" borderColor="whiteAlpha.100">
+        <Card bg="surface.2" variant="outline" borderColor="surface.3">
           <CardBody>
             <Text fontSize="sm" color="gray.400">API Status</Text>
             <Badge colorScheme={connected ? "green" : "red"} fontSize="md" mt={1}>
@@ -60,7 +60,7 @@ export default function Health() {
             </Badge>
           </CardBody>
         </Card>
-        <Card bg="navy.700" variant="outline" borderColor="whiteAlpha.100">
+        <Card bg="surface.2" variant="outline" borderColor="surface.3">
           <CardBody>
             <Text fontSize="sm" color="gray.400">Pending Jobs</Text>
             <Text fontSize="2xl" fontWeight="bold" color="yellow.400" mt={1}>
@@ -68,7 +68,7 @@ export default function Health() {
             </Text>
           </CardBody>
         </Card>
-        <Card bg="navy.700" variant="outline" borderColor="whiteAlpha.100">
+        <Card bg="surface.2" variant="outline" borderColor="surface.3">
           <CardBody>
             <Text fontSize="sm" color="gray.400">Running Jobs</Text>
             <Text fontSize="2xl" fontWeight="bold" color="blue.400" mt={1}>
@@ -76,7 +76,7 @@ export default function Health() {
             </Text>
           </CardBody>
         </Card>
-        <Card bg="navy.700" variant="outline" borderColor="whiteAlpha.100">
+        <Card bg="surface.2" variant="outline" borderColor="surface.3">
           <CardBody>
             <Text fontSize="sm" color="gray.400">Failed Jobs</Text>
             <Text fontSize="2xl" fontWeight="bold" color="red.400" mt={1}>
@@ -87,7 +87,7 @@ export default function Health() {
       </SimpleGrid>
 
       {failedJobs > 0 && (
-        <Card bg="navy.700" variant="outline" borderColor="red.500" mb={6}>
+        <Card bg="surface.2" variant="outline" borderColor="red.500" mb={6}>
           <CardBody>
             <Heading size="sm" color="red.400" mb={3}>
               Failed Jobs

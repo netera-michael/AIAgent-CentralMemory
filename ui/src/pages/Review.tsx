@@ -151,7 +151,7 @@ export default function Review() {
               {scratchMemories.map((m) => (
                 <Card
                   key={m.id}
-                  bg="navy.700"
+                  bg="surface.2"
                   variant="outline"
                   borderColor="yellow.500"
                   _hover={{ borderColor: "yellow.300" }}
@@ -247,7 +247,7 @@ function ReviewCard({
   })
 
   return (
-    <Card bg="navy.700" variant="outline" borderColor="orange.500">
+    <Card bg="surface.2" variant="outline" borderColor="orange.500">
       <CardBody>
         <HStack spacing={2} mb={2}>
           <Badge colorScheme="orange">{item.review_type}</Badge>
@@ -263,7 +263,7 @@ function ReviewCard({
 
         {targetMem && candidateMem && (
           <HStack spacing={4} mb={3}>
-            <Box flex={1} bg="navy.900" p={3} borderRadius="md">
+            <Box flex={1} bg="surface.4" p={3} borderRadius="md">
               <Text fontSize="xs" color="blue.400" mb={1} fontWeight="bold">
                 Target
               </Text>
@@ -274,7 +274,7 @@ function ReviewCard({
                 {targetMem.content}
               </Text>
             </Box>
-            <Box flex={1} bg="navy.900" p={3} borderRadius="md">
+            <Box flex={1} bg="surface.4" p={3} borderRadius="md">
               <Text fontSize="xs" color="orange.400" mb={1} fontWeight="bold">
                 Candidate
               </Text>
@@ -288,7 +288,7 @@ function ReviewCard({
           </HStack>
         )}
 
-        <Divider my={2} borderColor="whiteAlpha.200" />
+        <Divider my={2} borderColor="surface.4" />
 
         <HStack spacing={2}>
           <Button

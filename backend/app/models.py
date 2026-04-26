@@ -16,7 +16,6 @@ class Memory(Base):
     title = Column(Text, nullable=True)
     content = Column(Text, nullable=False)
     content_hash = Column(Text, unique=True, nullable=False)
-    summary = Column(Text, nullable=True)
     scope = Column(Text, nullable=False)
     sensitivity = Column(Text, nullable=False)
     status = Column(Text, nullable=False, default="scratch")

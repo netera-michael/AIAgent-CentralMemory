@@ -85,7 +85,7 @@ export default function Search() {
         Semantic Search
       </Heading>
 
-      <Card bg="navy.700" variant="outline" borderColor="whiteAlpha.100" mb={6}>
+      <Card bg="surface.2" variant="outline" borderColor="surface.3" mb={6}>
         <CardBody>
           <HStack spacing={3} mb={4}>
             <Input
@@ -94,10 +94,10 @@ export default function Search() {
               onChange={(e) => setQuery(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleSearch()}
               size="lg"
-              bg="navy.900"
+              bg="surface.4"
               color="white"
               border="1px solid"
-              borderColor="whiteAlpha.200"
+              borderColor="surface.4"
               _placeholder={{ color: "gray.500" }}
             />
             <Button
@@ -142,10 +142,10 @@ export default function Search() {
               value={scopeFilter}
               onChange={(e) => setScopeFilter(e.target.value)}
               maxW="180px"
-              bg="navy.900"
+              bg="surface.4"
               color="white"
               border="1px solid"
-              borderColor="whiteAlpha.200"
+              borderColor="surface.4"
               size="sm"
             >
               {SCOPES.map((s) => (
@@ -157,10 +157,10 @@ export default function Search() {
               value={typeFilter}
               onChange={(e) => setTypeFilter(e.target.value)}
               maxW="150px"
-              bg="navy.900"
+              bg="surface.4"
               color="white"
               border="1px solid"
-              borderColor="whiteAlpha.200"
+              borderColor="surface.4"
               size="sm"
             >
               <option value="fact">fact</option>
@@ -180,7 +180,7 @@ export default function Search() {
                 max={50}
                 size="sm"
               >
-                <NumberInputField bg="navy.900" color="white" />
+                <NumberInputField bg="surface.4" color="white" />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
                   <NumberDecrementStepper />
@@ -199,7 +199,7 @@ export default function Search() {
                 step={0.1}
                 size="sm"
               >
-                <NumberInputField bg="navy.900" color="white" />
+                <NumberInputField bg="surface.4" color="white" />
               </NumberInput>
             </FormControl>
           </HStack>
@@ -227,9 +227,9 @@ export default function Search() {
             {results.map((mem, i) => (
               <Card
                 key={mem.id}
-                bg="navy.700"
+                bg="surface.2"
                 variant="outline"
-                borderColor="whiteAlpha.100"
+                borderColor="surface.3"
                 _hover={{ borderColor: "brand.500" }}
                 cursor="pointer"
                 transition="all 0.15s"
@@ -261,12 +261,7 @@ export default function Search() {
                       {mem.created_at?.slice(0, 10)}
                     </Text>
                   </Flex>
-                  {mem.summary && (
-                    <Text fontSize="sm" color="gray.300" mb={2}>
-                      {mem.summary}
-                    </Text>
-                  )}
-                  <Text fontSize="sm" color="gray.400" noOfLines={3}>
+                   <Text fontSize="sm" color="gray.400" noOfLines={3}>
                     {mem.content}
                   </Text>
                 </CardBody>

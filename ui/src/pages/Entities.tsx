@@ -66,7 +66,7 @@ export default function Entities() {
         Entities
       </Heading>
 
-      <Card bg="navy.700" variant="outline" borderColor="whiteAlpha.100" mb={6}>
+      <Card bg="surface.2" variant="outline" borderColor="surface.3" mb={6}>
         <CardBody>
           <Heading size="sm" mb={4} color="white">
             Create Entity
@@ -80,10 +80,10 @@ export default function Entities() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="e.g., Contabo VPS"
-                bg="navy.900"
+                bg="surface.4"
                 color="white"
                 border="1px solid"
-                borderColor="whiteAlpha.200"
+                borderColor="surface.4"
               />
             </FormControl>
             <FormControl>
@@ -112,10 +112,10 @@ export default function Entities() {
                 value={desc}
                 onChange={(e) => setDesc(e.target.value)}
                 placeholder="Brief description"
-                bg="navy.900"
+                bg="surface.4"
                 color="white"
                 border="1px solid"
-                borderColor="whiteAlpha.200"
+                borderColor="surface.4"
               />
             </FormControl>
           </SimpleGrid>
@@ -133,7 +133,7 @@ export default function Entities() {
 
       <SimpleGrid columns={{ base: 2, lg: 4 }} spacing={3} mb={4}>
         {Object.entries(typeCounts).map(([t, count]) => (
-          <Card key={t} bg="navy.700" variant="outline" borderColor="whiteAlpha.100">
+          <Card key={t} bg="surface.2" variant="outline" borderColor="surface.3">
             <CardBody py={2}>
               <Text fontSize="sm" color="gray.400">
                 {t}
@@ -150,9 +150,9 @@ export default function Entities() {
         {entities.map((entity) => (
           <Card
             key={entity.id}
-            bg="navy.700"
+            bg="surface.2"
             variant="outline"
-            borderColor="whiteAlpha.100"
+            borderColor="surface.3"
             _hover={{ borderColor: "brand.500" }}
           >
             <CardBody py={3}>

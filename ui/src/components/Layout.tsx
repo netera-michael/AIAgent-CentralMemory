@@ -3,9 +3,9 @@ import Sidebar from "./Sidebar"
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <Box minH="100vh" bg="navy.900">
+    <Box minH="100vh" bg="surface.0">
       <Sidebar />
-      <Box ml="260px" p={8}>
+      <Box ml="240px" p={6}>
         {children}
       </Box>
     </Box>

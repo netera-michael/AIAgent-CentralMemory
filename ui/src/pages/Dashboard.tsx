@@ -107,7 +107,7 @@ export default function Dashboard() {
       </Heading>
 
       <SimpleGrid columns={{ base: 2, lg: 5 }} spacing={4} mb={6}>
-        <Card bg="navy.700" variant="outline" borderColor="whiteAlpha.100">
+        <Card bg="surface.2" variant="outline" borderColor="surface.3">
           <CardBody>
             <Stat>
               <StatLabel color="gray.400">Total</StatLabel>
@@ -115,7 +115,7 @@ export default function Dashboard() {
             </Stat>
           </CardBody>
         </Card>
-        <Card bg="navy.700" variant="outline" borderColor="whiteAlpha.100">
+        <Card bg="surface.2" variant="outline" borderColor="surface.3">
           <CardBody>
             <Stat>
               <StatLabel color="gray.400">Canonical</StatLabel>
@@ -123,7 +123,7 @@ export default function Dashboard() {
             </Stat>
           </CardBody>
         </Card>
-        <Card bg="navy.700" variant="outline" borderColor="whiteAlpha.100">
+        <Card bg="surface.2" variant="outline" borderColor="surface.3">
           <CardBody>
             <Stat>
               <StatLabel color="gray.400">Reviewed</StatLabel>
@@ -131,7 +131,7 @@ export default function Dashboard() {
             </Stat>
           </CardBody>
         </Card>
-        <Card bg="navy.700" variant="outline" borderColor="whiteAlpha.100">
+        <Card bg="surface.2" variant="outline" borderColor="surface.3">
           <CardBody>
             <Stat>
               <StatLabel color="gray.400">Scratch</StatLabel>
@@ -142,7 +142,7 @@ export default function Dashboard() {
             </Stat>
           </CardBody>
         </Card>
-        <Card bg="navy.700" variant="outline" borderColor="whiteAlpha.100">
+        <Card bg="surface.2" variant="outline" borderColor="surface.3">
           <CardBody>
             <Stat>
               <StatLabel color="gray.400">Pending Reviews</StatLabel>
@@ -160,7 +160,7 @@ export default function Dashboard() {
       )}
 
       <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={4} mb={6}>
-        <Card bg="navy.700" variant="outline" borderColor="whiteAlpha.100">
+        <Card bg="surface.2" variant="outline" borderColor="surface.3">
           <CardBody>
             <Heading size="sm" mb={4} color="white">
               Memory Timeline
@@ -172,8 +172,8 @@ export default function Dashboard() {
                   <YAxis stroke="#8b949e" fontSize={11} />
                   <Tooltip
                     contentStyle={{
-                      background: "#1a202c",
-                      border: "1px solid #4a5568",
+                      background: "#1a1a25",
+                      border: "1px solid #2a2a38",
                       borderRadius: 8,
                     }}
                   />
@@ -186,7 +186,7 @@ export default function Dashboard() {
           </CardBody>
         </Card>
 
-        <Card bg="navy.700" variant="outline" borderColor="whiteAlpha.100">
+        <Card bg="surface.2" variant="outline" borderColor="surface.3">
           <CardBody>
             <Heading size="sm" mb={4} color="white">
               By Scope
@@ -216,7 +216,7 @@ export default function Dashboard() {
       </SimpleGrid>
 
       <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={4}>
-        <Card bg="navy.700" variant="outline" borderColor="whiteAlpha.100">
+        <Card bg="surface.2" variant="outline" borderColor="surface.3">
           <CardBody>
             <Heading size="sm" mb={4} color="white">
               By Type
@@ -237,7 +237,7 @@ export default function Dashboard() {
                     size="sm"
                     colorScheme="brand"
                     borderRadius="full"
-                    bg="whiteAlpha.100"
+                    bg="surface.3"
                   />
                 </Box>
               ))}
@@ -245,7 +245,7 @@ export default function Dashboard() {
           </CardBody>
         </Card>
 
-        <Card bg="navy.700" variant="outline" borderColor="whiteAlpha.100">
+        <Card bg="surface.2" variant="outline" borderColor="surface.3">
           <CardBody>
             <Heading size="sm" mb={4} color="white">
               By Status

@@ -1,12 +1,9 @@
 import axios from "axios"
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000"
-const API_KEY = import.meta.env.VITE_API_KEY || ""
-
 const api = axios.create({
-  baseURL: API_URL,
+  baseURL: import.meta.env.VITE_API_URL || "/api",
   headers: {
-    "X-API-Key": API_KEY,
+    "X-API-Key": import.meta.env.VITE_API_KEY || "",
     "Content-Type": "application/json",
   },
 })
@@ -16,7 +13,6 @@ export interface Memory {
   type: string
   title: string | null
   content: string
-  summary: string | null
   scope: string
   sensitivity: string
   status: string

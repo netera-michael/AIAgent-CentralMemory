@@ -12,7 +12,6 @@ CREATE TABLE IF NOT EXISTS memories (
     title TEXT,
     content TEXT NOT NULL,
     content_hash TEXT UNIQUE NOT NULL,
-    summary TEXT,
     scope TEXT NOT NULL,
     sensitivity TEXT NOT NULL DEFAULT 'internal',
     status TEXT NOT NULL DEFAULT 'scratch',

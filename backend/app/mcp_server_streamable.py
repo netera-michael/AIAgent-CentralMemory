@@ -66,7 +66,6 @@ async def handle_list_tools() -> list[types.Tool]:
                     'type': {'type': 'string', 'description': 'Type of memory (e.g., fact, preference, project_note).'},
                     'scope': {'type': 'string', 'description': 'Scope (e.g., coding_projects, personal, infrastructure).'},
                     'title': {'type': 'string'},
-                    'summary': {'type': 'string'}
                 },
                 'required': ['content', 'type', 'scope']
             }
@@ -93,7 +92,6 @@ async def handle_list_tools() -> list[types.Tool]:
                     'memory_id': {'type': 'string'},
                     'status': {'type': 'string', 'description': 'New status (e.g., reviewed, canonical).'},
                     'title': {'type': 'string'},
-                    'summary': {'type': 'string'},
                     'content': {'type': 'string', 'description': 'New content. Triggers re-embedding automatically.'}
                 },
                 'required': ['memory_id']
@@ -203,7 +201,6 @@ async def handle_call_tool(
                 type=arguments['type'],
                 scope=arguments['scope'],
                 title=arguments.get('title'),
-                summary=arguments.get('summary')
             )
 
             initial_status = 'scratch'
@@ -301,8 +298,6 @@ async def handle_call_tool(
             update_kwargs = {}
             if 'title' in arguments and arguments['title'] is not None:
                 update_kwargs['title'] = arguments['title']
-            if 'summary' in arguments and arguments['summary'] is not None:
-                update_kwargs['summary'] = arguments['summary']
             if 'content' in arguments and arguments['content'] is not None:
                 update_kwargs['content'] = arguments['content']
             if new_status:
