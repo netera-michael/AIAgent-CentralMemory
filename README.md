@@ -35,7 +35,7 @@ CentralMemory is different:
 - **API** — FastAPI REST API on port 8001
 - **MCP** — Streamable HTTP server on port 9000 (10 tools: CRUD, search, entities, review, purge)
 - **Worker** — Background process for chunking + embedding via Ollama
-- **UI** — Streamlit admin dashboard on port 8501
+- **UI** — React + Chakra UI control panel on port 8501
 - **Postgres** — pgvector/pgvector:pg16 with HNSW index for fast vector search
 
 All services run in Docker Compose.

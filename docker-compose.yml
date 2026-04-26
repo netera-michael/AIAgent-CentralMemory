@@ -80,18 +80,15 @@ services:
   ui:
     build:
       context: ./ui
+      args:
+        - VITE_API_URL=${VITE_API_URL:-http://localhost:8001}
+        - VITE_API_KEY=${ADMIN_API_KEY:-}
     container_name: centralmemory-ui
     restart: unless-stopped
     depends_on:
       - api
-    environment:
-      - API_URL=http://api:8000
-      - ADMIN_API_KEY=${ADMIN_API_KEY:-}
     ports:
-      # Expose only to Tailscale interface or localhost in v1
       - "${BIND_IP:-127.0.0.1}:8501:8501"
-    volumes:
-      - ./ui:/app
 
 volumes:
   postgres_data:
