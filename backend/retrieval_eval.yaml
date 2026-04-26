@@ -1,0 +1,22 @@
+# CentralMemory Retrieval Eval Cases
+# Add a case here every time a real semantic search fails to surface what you expected.
+cases:
+  - query: "What are my current deployment servers?"
+    expected_type: "fact"
+    expected_content_match: "Contabo"
+    notes: "Should rank the primary host config highly."
+
+  - query: "How is CentralMemory backed up?"
+    expected_type: "fact"
+    expected_content_match: "Google Drive"
+    notes: "Testing if architecture decisions are retrievable."
+
+  - query: "Who is allowed to write to canonical memory?"
+    expected_type: "fact"
+    expected_content_match: "Admin UI"
+    notes: "Testing RBAC policy retrieval."
+
+  - query: "What was the decision on using a Graph Database?"
+    expected_type: "decision"
+    expected_content_match: "deferred"
+    notes: "Testing architectural decisions."

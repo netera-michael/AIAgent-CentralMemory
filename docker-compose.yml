@@ -1,0 +1,97 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: centralmemory-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-centralmemory}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-centralmemory}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backend/init_db.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      # Expose only to Tailscale interface or localhost in v1
+      - "${BIND_IP:-127.0.0.1}:5433:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-centralmemory} -d ${POSTGRES_DB:-centralmemory}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: ./backend
+    container_name: centralmemory-api
+    restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      - DATABASE_URL=postgresql://${POSTGRES_USER:-centralmemory}:${POSTGRES_PASSWORD:-postgres}@postgres:5432/${POSTGRES_DB:-centralmemory}
+      - OLLAMA_BASE_URL=${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
+    ports:
+      # Expose only to Tailscale interface or localhost in v1
+      - "${BIND_IP:-127.0.0.1}:8001:8000"
+    volumes:
+      - ./backend:/app
+
+  worker:
+    build:
+      context: ./backend
+    container_name: centralmemory-worker
+    command: ["python", "-m", "app.worker"]
+    restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      - DATABASE_URL=postgresql://${POSTGRES_USER:-centralmemory}:${POSTGRES_PASSWORD:-postgres}@postgres:5432/${POSTGRES_DB:-centralmemory}
+      - OLLAMA_BASE_URL=${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
+      - EMBEDDING_MODEL=nomic-embed-text
+    volumes:
+      - ./backend:/app
+
+  mcp:
+    build:
+      context: ./backend
+    container_name: centralmemory-mcp
+    command: ["python", "-m", "app.mcp_server_streamable"]
+    restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      - DATABASE_URL=postgresql://${POSTGRES_USER:-centralmemory}:${POSTGRES_PASSWORD:-postgres}@postgres:5432/${POSTGRES_DB:-centralmemory}
+      - OLLAMA_BASE_URL=${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
+      - CENTRALMEMORY_API_KEY=${CENTRALMEMORY_API_KEY:-}
+      - MCP_PORT=9000
+    ports:
+      - "${BIND_IP:-127.0.0.1}:9000:9000"
+    volumes:
+      - ./backend:/app
+      
+  ui:
+    build:
+      context: ./ui
+    container_name: centralmemory-ui
+    restart: unless-stopped
+    depends_on:
+      - api
+    environment:
+      - API_URL=http://api:8000
+      - ADMIN_API_KEY=${ADMIN_API_KEY:-}
+    ports:
+      # Expose only to Tailscale interface or localhost in v1
+      - "${BIND_IP:-127.0.0.1}:8501:8501"
+    volumes:
+      - ./ui:/app
+
+volumes:
+  postgres_data:
